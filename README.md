@@ -1,6 +1,6 @@
-# Title Abcde12%%
-## Subtitle qwertyno
+# Completing code test
+## added python file
 
 first time on github!!
 
-updated line..ignore the readme!!!
+updated line..one may ignore the readme!!!
