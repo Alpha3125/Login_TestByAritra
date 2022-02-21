@@ -1,4 +1,6 @@
-#Girija
+#Completing the code
+#4 parts- Q1, Q2, Q3, Q4
+
 class User:
 	def __init__(self, username, password=None, phone=None):
 		self.username = username
@@ -6,69 +8,76 @@ class User:
 		self.phone = phone
     
 	def verify_password(self):
-		p = input("Enter your password: ")
-		if self.password == p:
+		pwd = input("Enter your password: ")
+		if self.password == pwd:
 			return True
 		else:
 			return False
     
 	def make_password(self):
 		while True:
-			p = input("Enter password: ")
+			pwd = input("Enter password: ")
 			again = input("Re-enter Password: ")
-			if p == again:
-				self.password = p
+			if pwd == again:
+				self.password = pwd
+				print('Password updated!')
 				break
 			else:
 				print("Passwords don't match!!")
 				print("Try again!\n-New password-")
 
 	def add_number(self):
-		n=input('Enter your phone number: ')
-		for x in n:
+		#Q3 done
+		num = input('Enter your phone number: ')
+		for x in num:
 			if not x.isnumeric():
-				print('Only numbers and are allowed!!')
+				print('Only numbers are allowed!!')
 				print('-Please re-enter-')
 				self.add_number()
 			else:
-				self.phone=n
+				self.phone = num
+				print('Number updated!')
     
 	def change_password(self):
+		#Q2 done
 		print('-Current Password-')
 		if self.verify_password():
 			print('-New password-')
 			self.make_password()
 		else:
 			print('Password not matching!!')
-			print('-Please re-enter-')
-			self.change_password()
+			choice = ('Do you want to try again? (y for yes): ')
+			if choice.lower() == 'y':
+				self.change_password()
     
 	def change_username(self):
-		if(self.verify_password()):
-			n=input('Enter your new username: ')
-			f=input('Are you sure you want to keep this as your username? (y for yes): ')
-			if f.lower()=='y':
-				self.username=n
+		#Q4 done
+		if self.verify_password():
+			new = input('Enter your new username: ')
+			choice = input('Are you sure you want to keep this as your username? (y for yes): ')
+			if choice.lower() == 'y':
+				self.username = new
 			else:
-				f=input('Do you want to re-enter a new username? (y for yes): ')
-				if f.lower()=='y':
+				choice = input('Do you want to re-enter a new username? (y for yes): ')
+				if choice.lower() == 'y':
 					self.change_username()
 		else:
 			print('Incorrect password!')
 
-names = {"Shounak": User("Shounak"),"Prantika": User("Prantika")}
+			
+names = {"Shounak": User("Shounak"), "Prantika": User("Prantika")}
 
 def add_user(username):
+	#Q1 done
 	reg=User(username)
 	reg.make_password()
 	names[username]=reg	
 
+	
 while True:
     name = input("\nInput Username (q to quit): ")
-    
     if name.lower() == "q":
         break
-
     elif name in names.keys():
         user = names[name]
         if user.password is not None:
